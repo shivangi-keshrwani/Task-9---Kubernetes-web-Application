@@ -1,0 +1,650 @@
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap");
+  
+body {
+  margin: 0 auto;
+  height: 100%;
+}
+
+body {
+  align-items: center;
+  justify-content: center;
+  font-family: "Comfortaa", cursive;
+  background-color: #1d212b;
+}
+  /*------------------------------------k8s webapp logo------------------------------------------*/
+  img#k8{
+  height: 60px;
+  width: 60px;
+  vertical-align: top;
+  margin-left: 450px;
+  padding-top: 20px;
+  
+}
+  /*-----------------------------------------------------------------------------------------*/
+  h1{
+    right: 300px;
+    vertical-align: top;
+    color: rgb(189, 206, 241);
+    text-align: center;
+    margin-top: 0vw;}
+/*-----------------------------------------------------------------------------------------*/
+#container {
+  display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap:wrap  ;           /* default value; can be omitted */
+  justify-content: space-between; /* switched from default (flex-start, see below) */
+
+}
+#container1{
+  display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap:wrap  ;           /* default value; can be omitted */
+  
+}
+div#terminal {
+  font-family: Helvetica;
+  position: relative;
+  width: 56vw;
+  height: 30vw;
+  line-height: 5vw;
+  text-align:start;
+  color: #252B37;
+  background-color: #151823;
+  animation: textColor 10s ease infinite;
+  overflow: auto;
+  
+}
+div#terminal:after {
+  position: absolute;
+  content: "";
+  top: 5vw;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.75);
+  -webkit-filter: blur(5vw);
+  -moz-filter: blur(5vw);
+  -ms-filter: blur(5vw);
+  filter: blur(5vw);
+  background: linear-gradient(270deg, #0fffc1, #7e0fff);
+  background-size: 200% 200%;
+  animation: animateGlow 10s ease infinite;
+}
+@keyframes animateGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes textColor {
+  0% {
+    color: #7e0fff;
+  }
+  50% {
+    color: #0fffc1;
+  }
+  100% {
+    color: #7e0fff;
+  }
+}
+/*-----------------------------------------Buttons------------------------------------------------*/
+.btn {
+  appearance: none;
+  outline: 0;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  /* text-align: center;*/
+  text-decoration: none;
+ /* vertical-align: middle;*/
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border: none;
+  letter-spacing: 3px;
+  line-height: 20px;
+  height: 50px;
+  width: 200px;
+  padding: 0 0px;
+  font-size: 15px;
+  font-weight: 200;
+  color: rgb(255, 255, 255);
+  background-color: #7f71fe;
+  border-radius: 5px;
+  transition: all 0.3s ease-in;
+}
+.btn_text {
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+}
+.btn:hover {
+  background-color: #0074e8;
+}
+
+div#userinput{
+  text-align: center;
+  position: relative;
+}
+div#lbuttons{
+    text-align: right ;
+    flex-direction: column;
+    height: 400px;
+    width:200px;
+    padding-left: 60px;
+   
+    
+}
+div#rbuttons{
+  text-align:flex;
+    flex-direction: column;  
+    height: 400px;
+    width: 200px;
+    align-items:flex-end ;
+    padding-right: 60px;
+}
+
+/*------------------------ Putting custom scroll bar-------------------------------
+/* width 
+::-webkit-scrollbar {
+  width: 15px;
+  
+}
+
+/* Track 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 10px grey;
+  border-radius: 20px;
+}
+
+/* Handle 
+::-webkit-scrollbar-thumb {
+  background:#7f71fe;
+  border-radius: 20px;
+  size: 20px;
+}
+  -----------------------------------------------------------------------------------------*/
+
+  /*----------------------------------------Javascript Classes-----------------------------------------------*/
+  
+.mouse {
+  pointer-events: none;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: var(--mouse-btn-x);
+  top: var(--mouse-btn-y);
+}
+.mouse .svg-2 {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: -40px;
+  left: -40px;
+  opacity: 0.7;
+}
+.mouse .svg-2 path {
+  stroke: #1A1D2C;
+  stroke: #A0C3F1;
+  stroke: #bdd5ff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dashoffset: 25%;
+  stroke-dasharray: 100%;
+  animation: svg2 1s linear forwards;
+}
+.mouse .svg-2 .svg_obj {
+  stroke-width: 5;
+  opacity: 0.5;
+}
+
+  
+.link {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+}
+.link svg {
+  position: relative;
+  top: 5px;
+  margin: 0 4px;
+
+}
+  .mover {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 0px;
+  margin-left: -6px;
+  border-radius: 50%;
+  left: var(--mouse-x);
+  top: var(--mouse-y);
+  height: 13px;
+  width: 13px;
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.5);
+  transition: all 0.1s ease-out;
+  z-index: 1;
+}
+.mover.active {
+  transform: scale(0.8);
+
+}
+:root {
+  --mouse-x: -50px;
+  --mouse-y: -50px;
+  --mouse-btn-x: 50px;
+  --mouse-btn-y: 50px;}
+/*-----------------------------------------------------------------------------------------*/
+a {
+  color: #eb66d5;
+  text-decoration: none;
+  font-weight: 700;
+}
+div#input__group{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+ 
+}
+.input__group {
+  position:static;
+  padding: 5px 0 0;
+  margin-top: 10px;
+  width: 50%;
+ 
+}
+
+.input__field {
+  font-family:inherit;
+  width: 30%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  text-align:left;
+  font-size: 1rem;
+  color: #fff;
+  padding: 10px 0;
+  background: transparent;
+  transition: border-color 0.5s; 
+}
+
+
+.input__field:placeholder-shown ~ .input__label {
+  font-size: 20px;
+  cursor: text;
+  top: 20px;
+}
+
+.input__label {
+  position: absolute;
+  top: 30px;
+  padding-top: 120px;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.input__field:focus {
+  padding-bottom: 7px;
+  font-weight: 600;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #38ef7d);
+  border-image-slice: 1;
+}
+.input__field:focus ~ .input__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #11998e;
+  font-weight: 700;
+}
+
+/* reset input */
+.input__field:required, .input__field:invalid {
+  box-shadow:none;
+}
+/*---------------------------------------------------------------*/
+
+div#terminal-input{
+  text-align: left;
+  initial-letter-align: left;
+}
+button#run{
+  cursor: pointer;
+  width: 100px;
+  height: 35px;
+  background: white;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
+  animation: gradient 12.5s infinite 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.2) forwards;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;  
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@keyframes gradient {
+  0% { background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%) }
+  10% { background: linear-gradient(90deg, #d53369 0%, #daae51 100%) }
+  20% { background: linear-gradient(90deg, #FDBB2D 0%, #3A1C71 100%) }
+  30% { background: linear-gradient(90deg, #FDBB2D 0%, #22C1C3 100%) }
+  40% { background: linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%) }
+  50% { background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%) }
+  60% { background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%) }
+  70% { background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%) }
+  80% { background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%) }
+  90% { background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%) }
+  100% { background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%) }
+}
+
+.rotate {
+  animation: rotation 5s infinite linear;}
+  
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+
+
+</style>
+
+
+
+<script>
+	function myFunction() {
+	   var element = document.body;
+	   element.classList.toggle("dark-mode");
+	}
+	function commandProcessor(e) {
+
+//Check if the enter key is pressed
+if (e.keyCode == 13) {
+
+ 
+  document.getElementById('injected').innerHTML = "";
+  var i = document.getElementById("txtBox").value
+  var idd = "0"
+  var final = ""
+  if (((i.includes("deployments")) || (i.includes("deploy")) || (i.includes("deployment"))) && ((i.includes("create")) || (i.includes("generate")) || (i.includes("build")))) {
+    var image = prompt("Enter image name: ")
+	var deployment_name = prompt("Enter Deployment name: ")
+	var idd = "1"
+	var final = idd + " " + image + " " + deployment_name 
+	
+    }
+
+  else if (((i.includes("pods")) || (i.includes("pod"))) && ((i.includes("create")) || (i.includes("generate")) || (i.includes("build")))) {
+	var image = prompt("Enter image name: ")
+	var pod_name = prompt("Enter pod name: ")
+	var idd = "2"
+	var final = idd + " " + image + " " + pod_name
+	
+	}
+
+  else if (((i.includes("pods")) || (i.includes("pod"))) && ((i.includes("delete")) || (i.includes("remove")) || (i.includes("detach")))) {
+	var pod_name = prompt("Enter pod name: ")
+	var idd = "3"
+	var final = idd + " " + pod_name
+	
+	}
+
+  else if (((i.includes("deployments")) || (i.includes("deploy")) || (i.includes("deployment"))) && ((i.includes("delete")) || (i.includes("remove")) || (i.includes("detach")))) {
+	var deployment_name = prompt("Enter Deployment name: ")
+	var idd = "4"
+	var final = idd + " " + deployment_name
+	
+    }
+
+  else if (((i.includes("deployments")) || (i.includes("deploy")) || (i.includes("deployment"))) && ((i.includes("expose"))  || (i.includes("display")))) {
+	var deployment_name = prompt("Enter Deployment name: ")
+	var port_no = prompt("Enter port no on which you want yo export your deployment: ")
+	var expose_type = prompt(" 1. NodePort \n 2. ClusterIP \n 3.External \n Enter the type which you want to export ")
+	var idd = "5"
+	var final = idd + " " + deployment_name + " " + port_no + " " + expose_type
+	
+    }
+
+  else if (((i.includes("deployments")) || (i.includes("deploy")) || (i.includes("deployment"))) && ((i.includes("scale")) || (i.includes("increase")) || (i.includes("decrease")) || (i.includes("scale up")) || (i.includes("scale down")))) {
+	var deployment_name = prompt("Enter Deployment name: ")
+	var replica = prompt("Enter no. of replicas you need : ")
+	var idd = "6"
+	var final = idd + " " + deployment_name + " " + replica
+	
+    }
+
+  else if (((i.includes("pods")) || (i.includes("pod"))) && ((i.includes("show")) || (i.includes("get")) || (i.includes("list")))) {
+	var idd = "7"
+	var final = idd 
+	
+	}
+
+  else if (((i.includes("deployments"))|| (i.includes("deployment")) || (i.includes("deploy"))) && ((i.includes("show")) || (i.includes("get")) || (i.includes("list")))) {
+	var idd = "8"
+	var final = idd 
+	
+	}
+  else if (((i.includes("services")) || (i.includes("services")) || (i.includes("svc"))) && ((i.includes("show")) || (i.includes("get")) || (i.includes("list")))) {
+	var idd = "9"
+	var final = idd 
+	
+	}
+
+  else if (((i.includes("all")) || (i.includes("everything"))) && ((i.includes("delete")) || (i.includes("remove")) || (i.includes("destroy")))) {
+	var idd = "10"
+	var final = idd 
+	
+}
+
+  else {
+	var idd = "404"
+	var final = idd 
+	
+  }
+
+	
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "http://localhost/cgi-bin/try1.py?x=" + final, false)
+  xhr.send();
+  var output = xhr.responseText;
+
+  document.getElementById("injected").innerHTML = output;
+
+  //Clear input text box
+  document.getElementById('txtBox').value = "";
+}
+}
+
+</script>
+	</script>
+  <!--------------------------------------------------------------->
+
+<img id="k8" class="rotate" src="wheel.png">
+<h1>Kubernetes WebApp</h1> 
+<div id="input__group">
+    <input type="text" id="textarea" class="input__field"  name="x"  onkeyup="cmd()"> 
+    <label for="name" class="input__label">Enter K8s Command</label>
+    <button id="run" onclick="output()">Run</button>
+</div><br>
+<div id="container">
+
+  <div id='lbuttons'>
+     <button onclick="listService();" class="btn" type="button"><span class="btn_text">asdsasad</span></button><br><br><br>
+   <script src="k8s.js"></script>
+      <button onclick="delAll();" class="btn" type="button"><span class="btn_text">Launch pod</span></button><br><br><br>
+  <script src="k8s.js"></script>
+  <button class="btn" type="button"><span class="btn_text">Create Replica</span></button><br><br>
+ <!--
+    <button  onclick="listService();" class="list-svc btn2">List svc</button>
+    <script src="k8s.js"></script>
+
+    <button  onclick="delAll();" class="delete-all btn2">Delete All Resources</button>
+    <script src="k8s.js"></script>
+  </div>
+-->
+
+
+<div id="terminal">
+  <div id="container1">
+   
+    <div id="terminal-input-prefix">&nbsp; root@user:~$ &nbsp;<input type="text" class="s-input" id="txtBox" onkeypress="commandProcessor(event)"></div>
+    <div id="terminal-input" class='content'>|</div>
+ </div>
+  <div id="cmd_output">&nbsp;
+     <pre>
+    <div id="injected"></div>
+    </pre>
+  </div>
+  
+</div>
+
+
+<div id='rbuttons'>
+  <button onclick="scaleReplica();"class="btn" type="button"><span class="btn_text">Connect Service</span></button><br><br><br>
+  <script src="k8s.js"></script>
+  <button onclick="listPod();" class="btn" type="button"><span class="btn_text">list pods </span></button><br><br><br>
+  <script src="k8s.js"></script>
+  <button onclick="listDeploy();" class="btn" type="button"><span class="btn_text">Delete deployment</span></button><br><br><br>
+  <script src="k8s.js"></script>
+  <!--
+<button  onclick="scaleReplica();" class="scale-btn btn1">Scale</button>
+<script src="k8s.js"></script>
+
+<button  onclick="listPod();" class="list-pods btn2">List Pods</button>
+<script src="k8s.js"></script>
+
+<button  onclick="listDeploy();" class="list-deployment btn2">List Deployment</button>
+<script src="k8s.js"></script></div>
+-->
+</div>
+
+
+<!---
+<p>Lorem ipsurem ipsum lorem ipsum </p>
+<p>Lorem ipsum ipsum loem ipsum lorem ipsum </p>
+<p>Lorem iporem ip ipsum lorem ipsum lorem ipsum lorem irem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipsum lorem ipsumum lorem ipsum loem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum loremipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipsuorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem iposum lorem ipsum lorem ipsum loremsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+
+<p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+<p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+-->
+
+<div id="k8s_output_stream"> &nbsp; "😺" Here comes K8s command output</div>
+<!---<div id="deployment"> &nbsp;Enjoy! Deployment Created✨</div>-->
+<!---<div id="newpod"> &nbsp;Enjoy! New Pod Launched✨</div>-->
+<div class="mover"></div>
+<span class="link">Made with
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0H24V24H0z"/>
+    <path fill="#eb66d5" d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"/></svg>by 
+    <a href="" target="_blank"> Resolute Crew</a>
+</span>
+
+<script>
+
+function cmd(){
+  var i=document.getElementById("textarea");
+  var x=document.getElementById("terminal-input");
+  x.innerHTML=i.value;
+}
+let  y=document.getElementById("cmd_output");
+function output(){
+  var j=document.getElementById("k8s_output_stream");
+  y.innerHTML=j.innerHTML;
+}
+function cd_btn(){
+  var k=document.getElementById("deployment");
+  y.innerHTML=k.innerHTML;
+}
+function lp_btn(){
+  var k=document.getElementById("newpod");
+  y.innerHTML=k.innerHTML;
+}
+function recall(){
+  
+}
+let root = document.documentElement;
+let mover = document.querySelector(".mover");
+let link = document.querySelector(".btn");
+
+root.addEventListener("mousemove", (e) => {
+	root.style.setProperty("--mouse-x", e.clientX + "px");
+	root.style.setProperty("--mouse-y", e.clientY + "px");
+});
+
+link.addEventListener("click", function (event) {
+	event.preventDefault();
+	let svg = `<svg class="svg-2" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.5 18.5V1.5" stroke-linejoin="bevel"/>
+<path d="M18.5 26.5L1.5 26.5" stroke-linejoin="bevel"/>
+<path d="M27.5 36.5V53.5" stroke-linejoin="bevel"/>
+<path d="M36.5 26.5L53.5 26.5" stroke-linejoin="bevel"/>
+<path class="svg_obj" d="M21.8787 22L12.6863 12.8076" stroke-linejoin="bevel"/>
+<path class="svg_obj" d="M33 21.8789L42.1924 12.6865" stroke-linejoin="bevel"/>
+<path class="svg_obj" d="M21 33.1211L11.8076 42.3135" stroke-linejoin="bevel"/>
+<path class="svg_obj" d="M33.1213 33L42.3137 42.1924" stroke-linejoin="bevel"/>
+</svg>`;
+
+	let x = event.offsetX == undefined ? event.layerX : event.offsetX;
+	let y = event.offsetY == undefined ? event.layerY : event.offsetY;
+
+	let span = document.createElement("span");
+	span.className = "mouse";
+	span.innerHTML = svg;
+	s = span.style;
+	s.top = y + "px";
+	s.left = x + "px";
+	var angle = Math.floor(Math.random() * 25) + "deg";
+	s.transform = "rotate(" + angle + ")";
+	this.appendChild(span);
+
+	setTimeout(function () {
+		span.remove();
+	}, 1400);
+
+	mover.classList.add("active");
+	setTimeout(function () {
+		mover.classList.remove("active");
+	}, 250);
+});
+
+</script>
+
